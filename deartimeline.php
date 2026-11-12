@@ -6,7 +6,7 @@ Version: 1.4.0
 Author: Ankit Gyanwali
 License: GPLv2 or later
 Text Domain: deartimeline
-Requires PHP: 7.2
+Requires PHP: 7.4
 */
 
 if ( ! defined( 'ABSPATH' ) ) {

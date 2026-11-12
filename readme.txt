@@ -2,13 +2,13 @@
 Contributors: ankit07721
 Tags: timeline, vertical timeline, horizontal timeline, history, roadmap, responsive
 Requires at least: 5.6
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
 Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A premium, responsive timeline plugin for WordPress with **three layout modes**: Horizontal (scroll-snap), Classic (premium zigzag), and Flat (modern cards). Centralized visual editor with live preview, plus inline add/edit/delete from the timeline itself.
+A premium, responsive timeline plugin for WordPress with **three layout modes**: Horizontal (scroll-snap), Classic (premium zigzag), and Flat (modern cards). Text-first horizontal cards with bottom-anchored images, a centralized visual editor with live preview, and inline add/edit/delete directly from the timeline.
 
 == Description ==
 
@@ -17,6 +17,7 @@ DearTimeline lets you create beautiful, responsive timelines with zero bloat. Un
 ### Layouts
 
 *   **Horizontal** `[deartimeline layout="horizontal"]` — a scroll-snap-powered horizontal track with premium text-first cards: date badge and title on top, description, and a full-bleed image anchored at the bottom of every card. Includes color-coded milestone dots on a continuous spine, scroll progress bar, arrow navigation, keyboard arrows, and drag-to-scroll.
+*   **Classic** `[deartimeline layout="classic"]` — premium vertical zigzag with refined calendar badges, colored accent bars, a gradient spine, hover glow dots, and animated entrance effects.
 *   **Flat** `[deartimeline layout="flat"]` — modern side-by-side image and text cards alternating around a thin vertical spine with scroll-reveal animations.
 
 ### Premium Admin Experience
@@ -31,13 +32,17 @@ DearTimeline features a completely redesigned admin interface that lets you mana
 ### Core Features
 
 *   **Three Layouts**: Horizontal (scroll-snap), Classic (zigzag), Flat (modern cards) — each with its own distinct premium design.
-*   **Classic Layout Redesign**: Clean calendar badge with colored month strip, 2px gradient spine line, 14px refined dot with hover glow, white card with 3px colored accent bar on hover, and staggered entrance animations.
-*   **Per-Event Colors**: Custom background color applied to calendar date boxes in all layouts (flat, classic, horizontal).
+*   **Horizontal Layout Redesign**: Text-first cards — calendar date badge and event title side by side on top, description below, and a full-bleed featured image anchored to the bottom. Uniform card heights, a continuous milestone spine that scrolls with the content, per-event connector colors, and refined hover lift with image zoom.
+*   **Smart Horizontal Navigation**: Arrow buttons with disabled states at the edges, scroll progress bar, keyboard arrow keys, and desktop drag-to-scroll — with native touch swiping on mobile.
+*   **Classic Layout**: Clean calendar badge with colored month strip, 2px gradient spine line, refined dot with hover glow, white card with colored accent bar on hover, and staggered entrance animations.
+*   **Per-Event Colors**: Custom background color applied to calendar date boxes and connector lines across all layouts (flat, classic, horizontal).
 *   **Centralized Workspace**: Manage titles, dates, descriptions, featured images, and custom dimensions from a single dashboard.
 *   **Integrated Live Preview**: Embedded preview refreshes on save — see your timeline update in real time.
 *   **Scroll Reveal Animations**: Vertical items fade and slide in via IntersectionObserver — choose from fade, flip, or zoom.
 *   **Precision Image Controls**: Custom width and height per event image with `object-fit: cover`.
 *   **CSS Scroll Snap**: Horizontal layout uses native browser scroll-snapping — zero JavaScript slider libraries.
+*   **Accessible & Focusable**: The horizontal timeline is keyboard-focusable with a visible focus ring and an accessible region label.
+*   **Lightweight & Compatible**: Requires WordPress 5.6+ and PHP 7.4+; tested up to WordPress 7.1 and PHP 8.2. No jQuery slider dependencies, no external CSS frameworks.
 
 ### Best Use Cases
 
@@ -59,7 +64,8 @@ DearTimeline features a completely redesigned admin interface that lets you mana
 `[deartimeline]` (displays Flat layout by default)
 
 ### Switching Layouts
-- **Horizontal Layout**: `[deartimeline layout="horizontal"]` — scrollable cards on a horizontal spine, CSS Scroll Snap, left/right nav buttons.
+- **Horizontal Layout**: `[deartimeline layout="horizontal"]` — text-first cards on a continuous horizontal spine: date badge and title on top, description, and the featured image anchored at the bottom. CSS Scroll Snap, arrow buttons, keyboard arrows, drag-to-scroll, and a scroll progress bar.
+- **Classic Layout**: `[deartimeline layout="classic"]` — premium vertical zigzag with calendar badges and animated entrance.
 - **Flat Layout**: `[deartimeline layout="flat"]` — modern side-by-side cards with image and text.
 
 ### Animations (Vertical layouts only)
@@ -73,7 +79,7 @@ Choose from professional entrance effects:
 1. Live Desktop Preview at the top of the editor.
 2. Premium quick-add modal with glassmorphism design.
 3. Classic layout — premium zigzag with calendar badges and accent bars.
-4. Horizontal timeline layout with arrow navigation and scroll-snap cards.
+4. Horizontal timeline layout — text-first cards with bottom-anchored images, milestone spine, and scroll progress bar.
 
 == Changelog ==
 
@@ -86,6 +92,7 @@ Choose from professional entrance effects:
 * **Drag-to-Scroll**: Click and drag the track on desktop, just like a native slider. Touch swiping still works out of the box.
 * **Accessibility**: Timeline region is now focusable with an accessible label and a visible focus ring.
 * **Per-Event Connector Colors**: The connector line from each card to its milestone dot now uses the event's custom color.
+* **Compatibility**: Verified against WordPress 7.1 and PHP 8.2; plugin headers aligned to `Requires PHP: 7.4`.
 
 = 1.3.2 =
 * **Admin UI Overhaul**: Removed "Event Styling" metabox; "Live Desktop Preview" moved to top priority; inline "+" button with "Add New Event" label on timeline spine; inline edit (✎) and delete (×) action buttons on hover for both flat and classic layouts.
@@ -131,7 +138,7 @@ Simply add `[deartimeline]` to any page or post. By default, this will display a
 
 = Can I change the layout? =
 Yes! You can choose between three professional styles:
-- **Horizontal**: `[deartimeline layout="horizontal"]` — scrollable card row with arrow navigation. Perfect for mobile-first, swipeable timelines.
+- **Horizontal**: `[deartimeline layout="horizontal"]` — text-first cards with the image anchored at the bottom, connected by a continuous milestone spine. Arrow buttons, keyboard arrows, drag-to-scroll, and a progress bar. Perfect for mobile-first, swipeable timelines.
 - **Classic**: `[deartimeline layout="classic"]` — premium vertical zigzag with refined calendar badges, colored accent bars, and animated entrance.
 - **Flat**: `[deartimeline layout="flat"]` — modern card-based layout with side-by-side image and text panels.
 
@@ -148,7 +155,13 @@ In the WordPress admin, open a timeline event. The "Live Desktop Preview" at the
 On the event edit screen, look for the "Image Width" and "Image Height" fields below the title. You can use pixels (e.g., 300px) or percentages (e.g., 100%).
 
 = How does the horizontal layout work without JavaScript? =
-The horizontal timeline uses native CSS `scroll-snap-type: x mandatory` and `overflow-x: auto`. The scroll track works on any device without JavaScript — scroll with a trackpad, swipe on mobile, or use the arrow keys. The Vanilla JS layer (for left/right buttons) enhances but never replaces the core scroll experience.
+The horizontal timeline uses native CSS `scroll-snap-type: x mandatory` and `overflow-x: auto`. The scroll track works on any device without JavaScript — scroll with a trackpad, swipe on mobile, or focus the track and use the arrow keys. The Vanilla JS layer (arrow buttons, progress bar, drag-to-scroll, item-by-item keyboard navigation) enhances but never replaces the core scroll experience.
+
+= Is DearTimeline compatible with the latest WordPress and PHP versions? =
+Yes. DearTimeline requires WordPress 5.6+ and PHP 7.4+, and is tested up to WordPress 7.1 and PHP 8.2. It uses no deprecated PHP functions and no external slider libraries, so it stays fast and compatible as WordPress and PHP evolve.
+
+= Does the horizontal layout work on mobile? =
+Yes. Cards use native touch swiping with CSS Scroll Snap, and the layout automatically tightens spacing and card widths on smaller screens. On very narrow screens you can still use the arrow buttons or swipe between events.
 
 == Upgrade Notice ==
 
